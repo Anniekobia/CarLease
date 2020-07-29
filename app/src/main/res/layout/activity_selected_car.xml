@@ -227,13 +227,13 @@
             android:layout_height="40dp"
             android:src="@drawable/calendar"/>
 
+
         <TextView
+            android:id="@+id/calendatTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="Set trip dates"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
             android:backgroundTint="@android:color/transparent"
             android:layout_toEndOf="@id/calendarIcon"/>
 
@@ -282,13 +282,12 @@
             android:layout_height="40dp"
             android:src="@drawable/location2"/>
 
-        <EditText
+        <TextView
+            android:id="@+id/locationTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:hint="Select location"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
+            android:text="Select location"
             android:backgroundTint="@android:color/transparent"
             android:layout_toEndOf="@id/locationIcon"/>
 

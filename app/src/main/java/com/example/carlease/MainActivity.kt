@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.time.ExperimentalTime
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             true,
             199,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
+            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,19)),
                 Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
                 Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
                 Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             true,
             100,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
+            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,23),Date(2020,9,6)),
                 Deal("Sam Brody",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)))
         ),
         Car("Tesla",
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             true,
             200,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
+            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,9,1),Date(2020,9,7)),
                 Deal("Sam Brody",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)),
                 Deal("Ann Kibatha",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
                 Deal("Mary mMartha",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)))
@@ -62,9 +63,11 @@ class MainActivity : AppCompatActivity() {
     )
 
     lateinit var recyclerView: RecyclerView
+    @ExperimentalTime
     lateinit var recyclerViewAdapter: CarRecyclerViewAdapter
     lateinit var results : TextView
 
+    @ExperimentalTime
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

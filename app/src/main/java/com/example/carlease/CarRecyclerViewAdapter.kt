@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.time.DurationUnit
+import kotlin.time.ExperimentalTime
+import kotlin.time.milliseconds
 
-
+@ExperimentalTime
 class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayList<Car>) :
     RecyclerView.Adapter<CarRecyclerViewAdapter.MyViewHolder>() {
 
@@ -32,7 +37,6 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
         holder.carImage.setImageResource(car.carImage)
         holder.deals.setText(car.deals.size.toString()+" Deals")
 
-
         holder.nextScreen.setOnClickListener {
             val extras = Bundle()
             extras.putString("color",car.carColor)
@@ -41,11 +45,28 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
             extras.putInt("doors",car.numOfDoors)
             extras.putInt("seaters",car.numOfseaters)
             extras.putInt("charge",car.chargePerDay)
+            extras.putString("location",car.deals[0].pickupReturnLocation)
+
+            val parser =  SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US)
+            val formatter = SimpleDateFormat("d MMM",Locale.US)
+            val formattedDate = formatter.format(parser.parse(car.deals[0].departureDate.toString()))
+            val formattedDate1 = formatter.format(parser.parse(car.deals[0].returnDate.toString()))
+            extras.putString("departure",formattedDate)
+            extras.putString("return",formattedDate1)
+
+            val cal = Calendar.getInstance()
+            val cal2 = Calendar.getInstance()
+            cal.time = car.deals[0].departureDate
+            cal2.time = car.deals[0].returnDate
+            val days = daysDiff2(cal2,cal)
+            extras.putInt("days",days)
 
             val intent = Intent(context, SelectedCarActivity::class.java)
             intent.putExtra("Car",extras)
             context?.startActivity(intent)
         }
+
+
 
     }
 
@@ -57,6 +78,12 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
         val deals : TextView = itemView.findViewById(R.id.numberOfDeals)
 
         val nextScreen : ImageView = itemView.findViewById(R.id.nextIcon)
+    }
+
+    @ExperimentalTime
+    fun daysDiff2(c1: Calendar, c2: Calendar): Int {
+        val diffInMillis = c1.timeInMillis - c2.timeInMillis
+        return diffInMillis.milliseconds.toInt(DurationUnit.DAYS)
     }
 
 }
