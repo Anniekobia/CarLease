@@ -3,7 +3,7 @@
 ## Screenshots
 ### Design 
 <p>
-  <img hspace="20" width="60%" height="700" src="https://user-images.githubusercontent.com/22634271/88852619-308e9780-d1f7-11ea-8e7a-b9ee90839ca5.png" alt="Design" title="Design"/>
+  <img hspace="20" width="70%" height="700" src="https://user-images.githubusercontent.com/22634271/88852619-308e9780-d1f7-11ea-8e7a-b9ee90839ca5.png" alt="Design" title="Design"/>
 </p>
 
 ### Design Implementation(Different Icons)
