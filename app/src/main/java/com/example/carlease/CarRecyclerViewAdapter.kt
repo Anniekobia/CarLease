@@ -2,6 +2,7 @@ package com.example.carlease
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,15 +25,25 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val car = carlist[position]
+        val car : Car = carlist[position]
         holder.rating.setText(car.rating)
         holder.carColor.setText(car.carColor)
         holder.chargePerDay.setText("From $"+car.chargePerDay.toString()+"/day")
         holder.carImage.setImageResource(car.carImage)
         holder.deals.setText(car.deals.size.toString()+" Deals")
 
+
         holder.nextScreen.setOnClickListener {
+            val extras = Bundle()
+            extras.putString("color",car.carColor)
+            extras.putInt("image",car.carImage)
+            extras.putString("model",car.carModel)
+            extras.putInt("doors",car.numOfDoors)
+            extras.putInt("seaters",car.numOfseaters)
+            extras.putInt("charge",car.chargePerDay)
+
             val intent = Intent(context, SelectedCarActivity::class.java)
+            intent.putExtra("Car",extras)
             context?.startActivity(intent)
         }
 

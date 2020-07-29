@@ -4,32 +4,357 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0F0F0"
     tools:context=".SelectedCarActivity">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewTop"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
+        android:background="@drawable/rounded_cardview"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardElevation="0dp">
+        tools:layout_editor_absoluteX="16dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_cardview"
-            android:padding="20dp"
-            tools:layout_editor_absoluteX="16dp">
+        <ImageView
+            android:id="@+id/navbar_icon"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/backarrow"
+            android:tint="@android:color/white" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/carImage"
+        android:layout_width="200dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/orange_sports"
+        android:elevation="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/inner_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/rounded_carview"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/carColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orange Audi"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="|"
+            android:layout_marginHorizontal="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@id/carColor"/>
+
+        <TextView
+            android:id="@+id/numOfDoors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 doors"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@id/divider"
+            android:layout_below="@id/carColor"/>
+        <TextView
+            android:id="@+id/carModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audi A4 Sports"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/divider"
+            android:layout_below="@id/carColor"/>
+
+        <LinearLayout
+            android:id="@+id/ratingRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/divider"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="5dp">
 
             <ImageView
-                android:id="@+id/navbar_icon"
-                android:layout_width="25dp"
-                android:layout_height="20dp"
-                android:tint="@android:color/white"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/backarrow" />
+                android:id="@+id/ratingStar1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:tint="@color/color_yellow"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/star" />
+            <ImageView
+                android:id="@+id/ratingStar2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:tint="@color/color_yellow"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/star" />
+            <ImageView
+                android:id="@+id/ratingStar3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:tint="@color/color_yellow"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/star" />
+            <ImageView
+                android:id="@+id/ratingStar4"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:tint="@color/color_yellow"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/star" />
+            <ImageView
+                android:id="@+id/ratingStar5"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/star2" />
+
+            <TextView
+                android:id="@+id/ratingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(23.5k)"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/ratingRl">
+
+            <ImageView
+                android:id="@+id/automatic"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/automatic" />
+            <ImageView
+                android:id="@+id/airconditioner"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@id/automatic"
+                android:layout_marginHorizontal="50dp"
+                android:src="@drawable/airconditioner" />
+            <ImageView
+                android:id="@+id/numOfPeople"
+                android:layout_width="30dp"
+                android:layout_toEndOf="@id/airconditioner"
+                android:layout_height="30dp"
+                android:src="@drawable/people" />
+
+            <TextView
+                android:id="@+id/automaticTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Automatic"
+                android:layout_below="@id/automatic"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/airconditionerTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air Con"
+                android:layout_marginHorizontal="10dp"
+                android:layout_toEndOf="@id/automaticTxt"
+                android:layout_below="@id/airconditioner"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:id="@+id/peopleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Seater"
+                android:layout_below="@id/numOfPeople"
+                android:layout_toEndOf="@id/airconditioner"
+                android:textColor="@android:color/black"/>
 
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tripDatesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Trip Dates"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inner_rl"/>
+
+    <RelativeLayout
+        android:id="@+id/tripDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_inner_corners_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tripDatesTxt">
+
+        <ImageView
+            android:id="@+id/calendarIcon"
+            android:background="@drawable/rounded_calendar_icon"
+            android:layout_width="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            android:padding="5dp"
+            android:tint="@android:color/white"
+            android:layout_height="40dp"
+            android:src="@drawable/calendar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Set trip dates"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_toEndOf="@id/calendarIcon"/>
+
+        <ImageView
+            android:id="@+id/nextIcon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rounded_next_icon"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="18dp"
+            android:src="@drawable/nextarrows"
+            android:tint="@android:color/white" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pickupReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Pickup &amp; Return"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tripDate"/>
+
+    <RelativeLayout
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_inner_corners_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickupReturn">
+
+        <ImageView
+            android:id="@+id/locationIcon"
+            android:background="@drawable/rounded_calendar_icon"
+            android:layout_width="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            android:padding="5dp"
+            android:tint="@android:color/white"
+            android:layout_height="40dp"
+            android:src="@drawable/location2"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="Select location"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_toEndOf="@id/locationIcon"/>
+
+        <ImageView
+            android:id="@+id/nextIcon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rounded_next_icon"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="18dp"
+            android:src="@drawable/nextarrows"
+            android:tint="@android:color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:background="@drawable/rounded_checkout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="Total"/>
+        <TextView
+            android:id="@+id/totalCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/total"
+            android:layout_marginStart="30dp"
+            android:textStyle="bold"
+            android:text="$399"/>
+        <TextView
+            android:id="@+id/totalChargeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total"
+            android:layout_toEndOf="@id/totalCharge"
+            android:text=" /trip"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/checkoutCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#f23a29"
+            app:cardCornerRadius="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_alignParentEnd="true"
+            app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/checkoutTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="10dp"
+                    android:text="Go to checkout"
+                    android:textColor="@android:color/white" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
