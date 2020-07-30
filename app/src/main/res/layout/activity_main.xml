@@ -66,7 +66,7 @@
             android:layout_below="@id/choose_txt"
             android:layout_alignEnd="@id/profile_icon"
             android:layout_marginVertical="29dp"
-            android:src="@drawable/state" />
+            android:src="@drawable/ic_baseline_tune_24" />
     </RelativeLayout>
 
     <TextView

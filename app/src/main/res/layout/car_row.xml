@@ -1,92 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardviewRV"
+<RelativeLayout android:id="@+id/cardviewRV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_inner_corners"
     android:paddingStart="20dp"
     android:paddingTop="20dp"
+    android:layout_marginBottom="20dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ratingCardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        app:cardBackgroundColor="@color/color_yellow"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ratingCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="5dp"
-            android:paddingVertical="2dp">
-
-            <ImageView
-                android:id="@+id/ratingStar"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star" />
-
-            <TextView
-                android:id="@+id/ratingText"
+            app:cardBackgroundColor="@color/color_yellow"
+            app:cardCornerRadius="10dp"
+            android:padding="15dp"
+            app:cardElevation="0dp">
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ratingStar"
-                android:text="4.5"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="2dp">
 
-    <TextView
-        android:id="@+id/numberOfDeals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="20dp"
-        android:text="18 deals"
-        android:textColor="@color/color_green"
-        android:textSize="18sp" />
+                <ImageView
+                    android:id="@+id/ratingStar"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="7dp"
+                    android:src="@drawable/star" />
 
-    <ImageView
-        android:id="@+id/carImage"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/ratingCardView"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/sports_car_4484890" />
+                <TextView
+                    android:id="@+id/ratingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ratingStar"
+                    android:text="4.5"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/carColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carImage"
-        android:text="Orange Audi"
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/numberOfDeals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="18 deals"
+            android:paddingEnd="20dp"
+            android:textColor="@color/color_green"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/chargePerDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carColor"
-        android:text="From $199/day"
-        android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/carImage"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/ratingCardView"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/sports_car_4484890" />
 
-    <ImageView
-        android:id="@+id/nextIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carColor"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/rounded_next_icon"
-        android:padding="15dp"
-        android:src="@drawable/nextarrows"
-        android:tint="@android:color/white" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/carColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carImage"
+            android:text="Orange Audi"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/chargePerDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carColor"
+            android:text="From $199/day"
+            android:textSize="18sp" />
+
+<!--    TODO feel free to remove @drawable/ic_baseline_double_arrow_24 its seems a bit thicker but has better resolution. The png gets pixelated-->
+        <ImageView
+            android:id="@+id/nextIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carColor"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/rounded_next_icon"
+            android:padding="15dp"
+            android:src="@drawable/ic_baseline_double_arrow_24"
+            android:tint="@android:color/white" />
+    </RelativeLayout>

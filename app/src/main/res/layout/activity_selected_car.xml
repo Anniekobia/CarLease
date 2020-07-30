@@ -7,7 +7,20 @@
     android:background="#F0F0F0"
     tools:context=".SelectedCarActivity">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/navbar_icon"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="4dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        android:tint="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/rounded_cardview"
@@ -15,16 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp">
+        tools:layout_editor_absoluteX="16dp"/>
 
-        <ImageView
-            android:id="@+id/navbar_icon"
-            android:layout_width="25dp"
-            android:layout_height="20dp"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/backarrow"
-            android:tint="@android:color/white" />
-    </RelativeLayout>
 
     <ImageView
         android:id="@+id/carImage"
@@ -38,163 +43,174 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/inner_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/icon_dimen"
         android:layout_marginTop="160dp"
         android:background="@drawable/rounded_carview"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/carColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Orange Audi"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_40dp"
+            android:text="@string/orange_audi"
             android:textColor="@android:color/black"
-            android:layout_centerHorizontal="true"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/divider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="|"
-            android:layout_marginHorizontal="5dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:layout_below="@id/carColor"/>
+            android:textSize="@dimen/text_size_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/numOfDoors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 doors"
-            android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@id/divider"
-            android:layout_below="@id/carColor"/>
+            android:layout_below="@id/carColor"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:text="@string/_4_doors"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carColor" />
+
         <TextView
             android:id="@+id/carModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/carColor"
+            android:layout_marginStart="8dp"
             android:text="Audi A4 Sports"
-            android:layout_marginBottom="10dp"
-            android:layout_toEndOf="@id/divider"
-            android:layout_below="@id/carColor"/>
+            app:layout_constraintBottom_toBottomOf="@+id/numOfDoors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/numOfDoors" />
 
-        <LinearLayout
-            android:id="@+id/ratingRl"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/divider"
-            android:layout_marginBottom="20dp"
-            android:paddingHorizontal="5dp">
+            android:layout_marginStart="8dp"
+            android:text="|"
+            app:layout_constraintBottom_toBottomOf="@+id/numOfDoors"
+            app:layout_constraintEnd_toStartOf="@+id/carModel"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numOfDoors"
+            app:layout_constraintTop_toTopOf="@+id/numOfDoors" />
 
-            <ImageView
-                android:id="@+id/ratingStar1"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:tint="@color/color_yellow"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star" />
-            <ImageView
-                android:id="@+id/ratingStar2"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:tint="@color/color_yellow"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star" />
-            <ImageView
-                android:id="@+id/ratingStar3"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:tint="@color/color_yellow"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star" />
-            <ImageView
-                android:id="@+id/ratingStar4"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:tint="@color/color_yellow"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star" />
-            <ImageView
-                android:id="@+id/ratingStar5"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginEnd="7dp"
-                android:src="@drawable/star2" />
-
-            <TextView
-                android:id="@+id/ratingText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(23.5k)"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <RelativeLayout
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:layout_below="@id/ratingRl">
+            app:layout_constraintBottom_toBottomOf="@+id/ratingText"
+            app:layout_constraintEnd_toStartOf="@+id/ratingText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ratingText" />
 
-            <ImageView
-                android:id="@+id/automatic"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/automatic" />
-            <ImageView
-                android:id="@+id/airconditioner"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_toEndOf="@id/automatic"
-                android:layout_marginHorizontal="50dp"
-                android:src="@drawable/airconditioner" />
-            <ImageView
-                android:id="@+id/numOfPeople"
-                android:layout_width="30dp"
-                android:layout_toEndOf="@id/airconditioner"
-                android:layout_height="30dp"
-                android:src="@drawable/people" />
+        <TextView
+            android:id="@+id/ratingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="(23.5k)"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/carModel" />
 
-            <TextView
-                android:id="@+id/automaticTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Automatic"
-                android:layout_below="@id/automatic"
-                android:textColor="@android:color/black" />
+        <ImageView
+            android:id="@+id/automatic"
+            android:layout_width="@dimen/icon_dimen"
+            android:layout_height="@dimen/icon_dimen"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/automatic"
+            app:layout_constraintEnd_toEndOf="@+id/automaticTxt"
+            app:layout_constraintStart_toStartOf="@+id/automaticTxt"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
-            <TextView
-                android:id="@+id/airconditionerTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Air Con"
-                android:layout_marginHorizontal="10dp"
-                android:layout_toEndOf="@id/automaticTxt"
-                android:layout_below="@id/airconditioner"
-                android:textColor="@android:color/black"/>
-            <TextView
-                android:id="@+id/peopleTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5 Seater"
-                android:layout_below="@id/numOfPeople"
-                android:layout_toEndOf="@id/airconditioner"
-                android:textColor="@android:color/black"/>
+        <ImageView
+            android:id="@+id/airconditioner"
+            android:layout_width="@dimen/icon_dimen"
+            android:layout_height="@dimen/icon_dimen"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/automatic"
+            android:src="@drawable/airconditioner"
+            app:layout_constraintEnd_toEndOf="@+id/airconditionerTxt"
+            app:layout_constraintStart_toStartOf="@+id/airconditionerTxt"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
-        </RelativeLayout>
-    </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/numOfPeople"
+            android:layout_width="@dimen/icon_dimen"
+            android:layout_height="@dimen/icon_dimen"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/airconditioner"
+            android:src="@drawable/people"
+            app:layout_constraintEnd_toEndOf="@+id/peopleTxt"
+            app:layout_constraintStart_toStartOf="@+id/peopleTxt"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <TextView
+            android:id="@+id/automaticTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/automatic"
+            android:layout_marginTop="8dp"
+            android:text="Automatic"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/airconditionerTxt"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/automatic" />
+
+        <TextView
+            android:id="@+id/airconditionerTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/airconditioner"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_toEndOf="@id/automaticTxt"
+            android:text="Air Con"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/peopleTxt"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/automaticTxt"
+            app:layout_constraintTop_toTopOf="@+id/automaticTxt" />
+
+        <TextView
+            android:id="@+id/peopleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numOfPeople"
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@id/airconditioner"
+            android:text="5 Seater"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/airconditionerTxt"
+            app:layout_constraintTop_toTopOf="@+id/airconditionerTxt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/tripDatesTxt"
         android:layout_width="wrap_content"
