@@ -1,5 +1,6 @@
 package com.example.carlease
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,9 +8,12 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
+import kotlin.time.milliseconds
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,8 +94,45 @@ class MainActivity : AppCompatActivity() {
         results = findViewById(R.id.results_txtview)
         results.setText(carList.size.toString() + " Results")
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerViewAdapter = CarRecyclerViewAdapter(this, carList)
+        recyclerViewAdapter = CarRecyclerViewAdapter({ car: Car -> listItemClicked(car) }, carList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = recyclerViewAdapter
+    }
+
+    @ExperimentalTime
+    private fun listItemClicked(car: Car) {
+        val extras = Bundle()
+        extras.putString("color", car.carColor)
+        extras.putInt("image", car.carImage)
+        extras.putString("model", car.carModel)
+        extras.putInt("doors", car.numOfDoors)
+        extras.putInt("seaters", car.numOfseaters)
+        extras.putInt("charge", car.chargePerDay)
+        extras.putString("location", car.deals[0].pickupReturnLocation)
+
+        val parser = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US)
+        val formatter = SimpleDateFormat("d MMM", Locale.US)
+        val formattedDate =
+            formatter.format(parser.parse(car.deals[0].departureDate.toString()))
+        val formattedDate1 = formatter.format(parser.parse(car.deals[0].returnDate.toString()))
+        extras.putString("departure", formattedDate)
+        extras.putString("return", formattedDate1)
+
+        val cal = Calendar.getInstance()
+        val cal2 = Calendar.getInstance()
+        cal.time = car.deals[0].departureDate
+        cal2.time = car.deals[0].returnDate
+        val days = daysDiff2(cal2, cal)
+        extras.putInt("days", days)
+
+        val intent = Intent(this, SelectedCarActivity::class.java)
+        intent.putExtra("Car", extras)
+        startActivity(intent)
+    }
+
+    @ExperimentalTime
+    private fun daysDiff2(c1: Calendar, c2: Calendar): Int {
+        val diffInMillis = c1.timeInMillis - c2.timeInMillis
+        return diffInMillis.milliseconds.toInt(DurationUnit.DAYS)
     }
 }
