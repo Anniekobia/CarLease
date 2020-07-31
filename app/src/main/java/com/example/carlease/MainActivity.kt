@@ -1,5 +1,6 @@
 package com.example.carlease
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,11 +12,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.time.ExperimentalTime
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemSelected {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    val carList : ArrayList<Car> = arrayListOf<Car>(
-        Car("Audi A4 Sports",
+    val carList: ArrayList<Car> = arrayListOf<Car>(
+        Car(
+            "Audi A4 Sports",
             "Orange Audi",
             R.drawable.orange_sports,
             4,
@@ -25,14 +27,18 @@ class MainActivity : AppCompatActivity() {
             true,
             199,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,19)),
-                Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
-                Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
-                Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
-                Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
-                Deal("Sam Brody",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)))
+            arrayListOf(
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 19)),
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("Sam Brody", 100, "Miami, 786 FL", Date(2020, 9, 15), Date(2020, 10, 16))
+            )
         ),
-        Car("Kia Cerato",
+        Car(
+            "Kia Cerato",
             "Blue Kia Cerato",
             R.drawable.blue_car,
             4,
@@ -42,10 +48,13 @@ class MainActivity : AppCompatActivity() {
             true,
             100,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,8,23),Date(2020,9,6)),
-                Deal("Sam Brody",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)))
+            arrayListOf(
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 8, 23), Date(2020, 9, 6)),
+                Deal("Sam Brody", 100, "Miami, 786 FL", Date(2020, 9, 15), Date(2020, 10, 16))
+            )
         ),
-        Car("Tesla",
+        Car(
+            "Tesla",
             "Red Tesla",
             R.drawable.sports_car_4484890,
             4,
@@ -55,17 +64,20 @@ class MainActivity : AppCompatActivity() {
             true,
             200,
             "Florida, USA",
-            arrayListOf(Deal("John Smith",150,"Miami, 786 FL", Date(2020,9,1),Date(2020,9,7)),
-                Deal("Sam Brody",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)),
-                Deal("Ann Kibatha",150,"Miami, 786 FL", Date(2020,8,16),Date(2020,8,16)),
-                Deal("Mary mMartha",100,"Miami, 786 FL", Date(2020,9,15),Date(2020,10,16)))
+            arrayListOf(
+                Deal("John Smith", 150, "Miami, 786 FL", Date(2020, 9, 1), Date(2020, 9, 7)),
+                Deal("Sam Brody", 100, "Miami, 786 FL", Date(2020, 9, 15), Date(2020, 10, 16)),
+                Deal("Ann Kibatha", 150, "Miami, 786 FL", Date(2020, 8, 16), Date(2020, 8, 16)),
+                Deal("Mary mMartha", 100, "Miami, 786 FL", Date(2020, 9, 15), Date(2020, 10, 16))
+            )
         )
     )
 
     lateinit var recyclerView: RecyclerView
+
     @ExperimentalTime
     lateinit var recyclerViewAdapter: CarRecyclerViewAdapter
-    lateinit var results : TextView
+    lateinit var results: TextView
 
     @ExperimentalTime
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,10 +85,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         results = findViewById(R.id.results_txtview)
-        results.setText(carList.size.toString()+" Results")
+        results.setText(carList.size.toString() + " Results")
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerViewAdapter = CarRecyclerViewAdapter(applicationContext ,carList)
+
+
+        //TODO  remove applicationContext or if you want to keep this the use Activity context (this@MainActivity)
+        recyclerViewAdapter = CarRecyclerViewAdapter(applicationContext /*this*/, carList)
         recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.adapter = recyclerViewAdapter
+    }
+
+    override fun onCarItemSelected(bundle: Bundle) {
+        startActivity(
+            Intent(this, SelectedCarActivity::class.java)
+                .putExtra("Car", bundle)
+        )
     }
 }

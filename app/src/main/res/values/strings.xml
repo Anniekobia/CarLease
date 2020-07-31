@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CarLease</string>
     <string name="choose_a_car">Choose a car</string>
+    <string name="_4_doors">4 doors</string>
+    <string name="orange_audi">Orange Audi</string>
+    <string name="_5_seater">5 Seater</string>
+    <string name="air_con">Air Con</string>
 </resources>

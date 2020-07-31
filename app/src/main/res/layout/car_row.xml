@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout android:id="@+id/cardviewRV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp">
-
-    <RelativeLayout
-        android:id="@+id/cardviewRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_inner_corners"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    android:background="@drawable/rounded_inner_corners"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
+    android:layout_marginBottom="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ratingCardView"
@@ -83,6 +79,7 @@
             android:text="From $199/day"
             android:textSize="18sp" />
 
+<!--    TODO feel free to remove @drawable/ic_baseline_double_arrow_24 its seems a bit thicker but has better resolution. The png gets pixelated-->
         <ImageView
             android:id="@+id/nextIcon"
             android:layout_width="wrap_content"
@@ -91,8 +88,6 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/rounded_next_icon"
             android:padding="15dp"
-            android:src="@drawable/nextarrows"
+            android:src="@drawable/ic_baseline_double_arrow_24"
             android:tint="@android:color/white" />
     </RelativeLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

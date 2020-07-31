@@ -17,7 +17,7 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
 
 @ExperimentalTime
-class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayList<Car>) :
+class CarRecyclerViewAdapter(private val context: Context? /*TODO val callback: OnItemSelected*/, val carlist: ArrayList<Car>) :
     RecyclerView.Adapter<CarRecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -63,7 +63,19 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
 
             val intent = Intent(context, SelectedCarActivity::class.java)
             intent.putExtra("Car",extras)
+            /*
+                TODO This is causing app to crash with error:
+                 android.util.AndroidRuntimeException:
+                 {Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag.
+                  Is this really what you want?}
+
+                  Try comment out this
+                   callback.onCarItemSelected(extras)
+
+             */
+
             context?.startActivity(intent)
+
         }
 
 
@@ -86,4 +98,8 @@ class CarRecyclerViewAdapter(private val context: Context?, val carlist: ArrayLi
         return diffInMillis.milliseconds.toInt(DurationUnit.DAYS)
     }
 
+}
+
+interface OnItemSelected{
+    fun onCarItemSelected(bundle: Bundle)
 }
